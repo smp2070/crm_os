@@ -1,0 +1,25 @@
+//NEW INPUT STYLE
+input
+	&[type='checkbox']
+		-webkit-appearance: none
+		-moz-appearance: none
+		width: 18px
+		height: 18px
+		border-radius: 2px
+		border: 2px solid #757575
+		outline: none
+		cursor: pointer
+	&:checked
+		background-color: #212121
+		border-color: #212121
+		&::after
+			content: ''
+			width: 7px
+			height: 13px
+			margin-left: 4px
+			margin-top: -1px
+			transform: rotate(45deg)
+			display: block
+			color: #fff
+			border-bottom: 2px solid #fff
+			border-right: 2px solid #fff

@@ -1,0 +1,109 @@
+/* HEADER START */
+.header
+	position: fixed
+	left: 0
+	right: 0
+	top: 0
+	width: 100%
+	background-color: var(--black)
+	color: #fff
+	z-index: 101
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,.2)
+	&__inner
+		display: flex
+		align-items: center
+		padding: 0 15px
+		height: 60px
+	&__logo
+		user-select: none
+		font-size: 28px
+		font-weight: bold
+		cursor: pointer
+		color: #fff
+		text-decoration: none
+
+.burger
+	position: relative
+	font-size: 0
+	outline: none
+	width: 20px
+	height: 16px
+	transition: 0.3s background
+	margin-right: 25px
+	i
+		top: 50%
+		display: block
+		width: 100%
+		height: 2px
+		transition: 0.2s transform
+		background-color: #fff
+		&::before,
+		&::after
+			content: ""
+			position: absolute
+			background-color: #fff
+			left: 0
+			width: inherit
+			height: inherit
+			transition: inherit
+		&::before
+			top: 0
+		&::after
+			bottom: 0
+	&--close
+		i
+			background-color: rgba(255,255,255,0)
+			&::before
+				top: auto
+				transform: rotate(45deg)
+			&::after
+				bottom: auto
+				transform: rotate(-45deg)
+
+/* ASIDE MENU START */
+.aside
+	background-color: #212121
+	position: fixed
+	left: 0
+	top: 60px
+	width: 300px
+	height: 100%
+	z-index: 101
+	will-change: transform
+	transition: 0.2s
+	transform: translateX(-100%)
+	&--opened
+		transform: translateX(0)
+		&::after
+			content: ''
+			background: red
+	&__item
+		transition: 0.3s background
+		border-bottom: 1px solid rgba(0,0,0,0.2)
+		cursor: pointer
+		&:last-of-type
+			border-bottom: none
+		&:hover
+			background: rgba(0, 0, 0, 0.6)
+	&__link
+		padding: 15px
+		display: flex
+		align-items: center
+		color: #fff
+		text-decoration: none
+		&::before
+			content: ""
+			width: 20px
+			height: 20px
+			margin-right: 20px
+			background:
+				repeat: no-repeat
+				size: contain
+		&--orders::before
+			background-image: url(/img/request.svg)
+		&--users::before
+			background-image: url(/img/users.svg)
+		&--warehouse::before
+			background-image: url(/img/whouse.svg)
+		&--logout::before
+			background-image: url(/img/logout.svg)
