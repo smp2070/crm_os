@@ -1,0 +1,69 @@
+.react-date-picker__inputGroup
+    justify-content: center
+.orders
+    &__flex
+        display: flex
+        justify-content: space-between
+        align-items: flex-end
+        margin-bottom: 15px
+
+
+
+    &__filter
+        display: flex
+    &__filter-item
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        margin-right: 15px
+        &:last-of-type
+            margin-right: 0
+    &__filter-select
+        min-width: 200px
+    &__filter-date
+        min-height: 38px
+    &__quantity
+        min-width: 100px
+        margin-right: 15px
+    &__add-product
+        margin-right: 15px
+    &__reload
+        margin-right: 15px
+    &__table
+        border-radius: 2px
+        background-color: #fff
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12)
+        padding: 15px
+        margin-bottom: 15px
+    &__table-inner
+        width: 100%
+        tr
+            display: grid
+            grid-template-columns: 60px repeat(6,1fr) 160px 120px
+            align-items: center
+            justify-items: center
+            // height: auto
+            // grid-column-gap: 10px
+            // grid-auto-rows: 54px
+            // border-bottom: 1px solid rgba(0,0,0,.12)
+        td, th
+            padding: 0
+            &:first-of-type
+                display: flex
+    &__table-nav
+        display: flex
+        justify-content: space-between
+        margin-bottom: 15px
+    &__table-nav-left
+        display: flex
+        align-items: center
+    
+    
+
+.relocate-status
+    display: flex
+    align-items: flex-end
+    &__select
+        min-width: 200px
+        margin-right: 15px
+    &__button
