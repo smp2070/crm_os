@@ -3,6 +3,24 @@ import Select from 'react-select';
 import DatePicker from 'react-date-picker';
 import makeAnimated from 'react-select/lib/animated';
 import { statusList } from '../services/helpers';
+import Button from './UI/Button';
+
+const colourStyles = {
+    control: styles => ({ ...styles, backgroundColor: 'white' }),
+    multiValue: (styles, { data }) => {
+        // console.log('data', data);
+        // console.log('styles', styles);
+        return {
+            ...styles,
+            backgroundColor: data.color,
+            color: '#fff'
+        };
+    },
+    multiValueLabel: (styles, { data }) => ({
+        ...styles,
+        color: '#fff',
+    }),
+};
 
 class OrdersFilter extends Component {
     state = {
@@ -31,7 +49,7 @@ class OrdersFilter extends Component {
             <ul className="orders__filter">
                 <li className="orders__filter-item">
                     <h3>Статусы</h3>
-                    <Select closeMenuOnSelect={false} components={makeAnimated()} placeholder="Статусы" className="orders__filter-select" isMulti name="statuses" value={statuses} onChange={this.handleChange} options={statusList.filter(el => el.isSelect)} />
+                    <Select closeMenuOnSelect={false} components={makeAnimated()} placeholder="Статусы" className="orders__filter-select" isMulti name="statuses" value={statuses} onChange={this.handleChange} options={statusList.filter(el => el.isSelect)} styles={colourStyles}/>
                 </li>
                 <li className="orders__filter-item">
                     <h3>Сайты</h3>
@@ -56,7 +74,7 @@ class OrdersFilter extends Component {
                     </div>
                 </li>
                 <li className="orders__filter-item">
-                    <button className="btn">Применить</button>
+                    <Button>Применить</Button>
                 </li>
             </ul>
         );

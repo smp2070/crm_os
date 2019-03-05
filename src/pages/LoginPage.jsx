@@ -61,7 +61,7 @@ class LoginPage extends Component {
                 <div className="signin__inner">
                     <h1 className="signin__title">TOP-SALE</h1>
                     <form className="signin__form" onSubmit={e => this.onSubmit(e)}>
-                        <InputGroup data={login} output={item => this.handleInputGroup(item)}/>
+                        <InputGroup data={login} output={(state, isValid) => this.handleInputGroup(state, isValid)}/>
                         <label className="new__check">
                             <input type="checkbox"/>
                             <b>Запомнить меня</b>

@@ -22,8 +22,7 @@ class OrdersPage extends Component {
         console.log(data);
         return (
             <div className="orders">
-                <div className="orders__flex" style={{borderBottom: '5px solid green'}}>
-                    {/* <StatusList data={this.statusList.filter(el => el.isRadio)} /> */}
+                <div className="orders__flex" style={{borderBottom: '5px solid green'}} >
                     <StatusList />
                     <OrdersGlobalSearch />
                 </div>
