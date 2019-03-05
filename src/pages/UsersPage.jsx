@@ -62,6 +62,7 @@ class AdminPage extends Component {
                 <Table columns={this.columns} data={users} />
                 <Modal show={isOpenModal}>{modal}</Modal>
 
+
                 {/* <Modal show={isOpenModal}>
                     <h2>{isModalEditUser ? 'Редактировать' : 'Добавить'} оператора</h2>
                     <UserModal
@@ -71,6 +72,7 @@ class AdminPage extends Component {
                         user={user}
                         />
                 </Modal> */}
+
             </div>
         )
     }

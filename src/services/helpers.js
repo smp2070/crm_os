@@ -12,6 +12,7 @@ export const statusList = [
     { color: '#000000', value: 12, isSelect: false, isRadio: true,  label: 'Архив',          radioName: 'Архив'          }
 ];
 
+
 /*
     // в select'e
         Новые
