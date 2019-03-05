@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import DatePicker from 'react-date-picker';
 import makeAnimated from 'react-select/lib/animated';
+import { statusList } from '../services/helpers';
 
 class OrdersFilter extends Component {
     state = {
@@ -10,6 +11,9 @@ class OrdersFilter extends Component {
         statuses: null,
         startDate: new Date(),
         endDate: new Date(),
+    }
+    componentDidMount() {
+        // this.setState({  });
     }
     handleChange = (selectedOption, prop) => {
         console.log(selectedOption)
@@ -27,7 +31,7 @@ class OrdersFilter extends Component {
             <ul className="orders__filter">
                 <li className="orders__filter-item">
                     <h3>Статусы</h3>
-                    <Select closeMenuOnSelect={false} components={makeAnimated()} placeholder="Статусы" className="orders__filter-select" isMulti name="statuses" value={statuses} onChange={this.handleChange} options={data.statuses} />
+                    <Select closeMenuOnSelect={false} components={makeAnimated()} placeholder="Статусы" className="orders__filter-select" isMulti name="statuses" value={statuses} onChange={this.handleChange} options={statusList.filter(el => el.isSelect)} />
                 </li>
                 <li className="orders__filter-item">
                     <h3>Сайты</h3>
@@ -39,7 +43,7 @@ class OrdersFilter extends Component {
                 </li>
                 <li className="orders__filter-item">
                     <h3>Дата</h3>
-                    <div >
+                    <div>
                         <DatePicker
                             clearIcon={null}
                             calendarIcon={null}

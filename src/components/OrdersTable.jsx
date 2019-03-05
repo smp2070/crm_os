@@ -20,16 +20,16 @@ class OrdersTable extends Component {
         isOpenModal: false
     }
     columns = [
-        { path: "name", label: "---" },
-        { path: "photo", label: "Номер заказа" },
-        { path: "category", label: "Дата" },
-        { path: "balance", label: "Имя" },
-        { path: "reserve", label: "Товар" },
-        { path: "purchasePrice", label: "Цена" },
-        { path: "price", label: "Домен" },
-        { path: "discountPrice", label: "Статус" },
+        { path: "status", label: <input type="checkbox" />, content: item => <input type="checkbox" /> },
+        { path: "id", label: "Номер заказа" },
+        { path: "create_time", label: "Дата" },
+        { path: "name", label: "Имя" },
+        { path: "model", label: "Товар" },
+        { path: "price", label: "Цена" },
+        { path: "domain", label: "Домен" },
+        { path: "vid", label: "Статус" },
         {
-            path: "id",
+            path: "edit",
             label: "Редактировать",
             // content: item => <button className="btn btn--blue btn--edituser"></button>
             content: item => <Button className="btn--blue btn--edituser"/>
@@ -46,16 +46,16 @@ class OrdersTable extends Component {
         console.log(data, 'data')
         return (
             <div className="orders__table">
-                <div>
-                    <div style={{display: 'flex'}}>
-                        <Button onClick={() => this.showModal()}>Добавить заказ</Button>
-
+                <div className="orders__table-nav">
+                    <div className="orders__table-nav-left">
+                        <Button onClick={() => this.showModal()} className="orders__add-product">Добавить заказ</Button>
                         <Select className="orders__quantity" defaultValue={qnt[0]} value={this.state.selectedOption} onChange={this.handleChange} options={qnt} />
+                        <Button className="orders__reload"/>
                         <span>Всего: {data.ordersCount}</span>
                     </div>
-                    <input type="text" />
+                    <input type="text" className=""/>
                 </div>
-                <Table columns={this.columns} data={data.orders} />
+                <Table columns={this.columns} data={data.orders} className="orders__table-inner"/>
 
 
             </div>

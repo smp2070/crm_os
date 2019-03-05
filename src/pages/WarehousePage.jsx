@@ -19,12 +19,10 @@ class WarehousePage extends Component {
         { path: "purchasePrice", label: "Закупочная цена" },
         { path: "price", label: "Цена" },
         { path: "discountPrice", label: "Скидочная цена" },
-        { path: "history", label: "История",
-            // content: item => <button className="btn btn--blue btn--history" onClick={() => this.handleHistory(item.id)}></button>
+        { path: "history", label: "History",
             content: item => <Button className="btn--blue btn--history" onClick={() => this.showHistoryModal(item.id)} />
         },
-        { path: "id", label: "Редактировать",
-            // content: item => <button className="btn btn--blue btn--edituser"></button>
+        { path: "id", label: "Edit",
             content: item => <Button className="btn--blue btn--edituser" onClick={() => this.showProductModal(item.id)} />
         }
     ]
@@ -55,7 +53,7 @@ class WarehousePage extends Component {
             <div className="warehouse">
                 <h2>Склад</h2>
                 <Button className="btn--green mb-25" onClick={() => this.showProductModal()}>Добавить товар</Button>
-                <Table columns={this.columns} data={products} />
+                <Table columns={this.columns} data={products} className="warehouse__table"/>
                 <Modal show={this.state.isOpenHistoryModal}>
 
                 </Modal>

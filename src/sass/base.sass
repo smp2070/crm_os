@@ -17,8 +17,10 @@
 	box-sizing: border-box
 	margin: 0
 	padding: 0
+
 html,body
 	height: 100%
+
 body
 	font-size: 14px
 	font-family: 'Roboto', sans-serif
@@ -26,6 +28,7 @@ body
 	min-width: 320px
 	overflow-x: hidden
 	background-color: #fafafa
+
 table
 	border-radius: 2px
 	background-color: #fff
@@ -372,6 +375,23 @@ nav
 		object-fit: cover
 		object-position: center
 
+	&__table
+		width: 100%
+		th
+			padding: 0
+		tr
+			display: grid
+			grid-template-columns: 1fr 50px repeat(6,1fr) 88px 88px
+			justify-items: center
+			padding: 0
+			list-style: none
+			grid-column-gap: 15px
+			align-items: center
+			padding: 0 20px
+			overflow: hidden
+			height: 55px
+			td
+				padding: 0
 
 .signin
 	display: flex
@@ -404,3 +424,24 @@ nav
 	// 	justify-self: end
 	// 	font-size: 16px
 	// 	text-transform: none
+
+
+	
+.status
+    display: flex
+    align-items: flex-end
+    // height: 51px
+    &__label
+        cursor: pointer
+        color: #fff
+        padding: 10px 15px
+        text-transform: uppercase
+        box-shadow: none
+        margin-right: 10px
+        &--active
+            padding: 15px
+        &:last-of-type
+            margin-right: 0
+    &__input
+        &:checked + label
+            padding: 15px
