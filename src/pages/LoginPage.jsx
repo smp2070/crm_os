@@ -8,8 +8,6 @@ class LoginPage extends Component {
     state = {
         login: {
             email: {
-                label: 'Email',
-                elementType: 'input',
                 elementConfig: {
                     type: 'email',
                     placeholder: 'E-mail'
@@ -23,8 +21,6 @@ class LoginPage extends Component {
                 touched: false
             },
             password: {
-                label: 'Password',
-                elementType: 'input',
                 elementConfig: {
                     type: 'password',
                     placeholder: 'Password'
@@ -39,22 +35,27 @@ class LoginPage extends Component {
                 valid: false,
                 touched: false
             }
-        }
+        },
+        formIsValid: false,
+        rememberMe: false
+
     }
-    handleInputGroup(output) {
-        const login = {
-            email: output.email,
-            password: output.password
-        };
-        this.setState({ login })
-        console.log(this.state.login)
+    handleInputGroup(output, isValid) {
+        this.setState({ login: output, formIsValid: isValid })
+        setTimeout( () => console.log(isValid), 500)
     }
     onSubmit(e) {
         e.preventDefault();
-        console.log('submit')
+        
+        if (this.state.formIsValid) {
+            console.log('submit')
+        } else {
+
+        }
+        
     }
     render() {
-        const { login } = this.state;
+        const { login, formIsValid } = this.state;
         
         return (
             <div className="signin">
@@ -66,7 +67,7 @@ class LoginPage extends Component {
                             <input type="checkbox"/>
                             <b>Запомнить меня</b>
 					    </label>
-                        <Button type="submit" className="btn--dark">Вход</Button>
+                        <Button disabled={!formIsValid} type="submit" className="btn--dark">Вход</Button>
 			        </form>
                 </div>
             </div>

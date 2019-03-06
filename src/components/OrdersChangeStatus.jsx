@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import Button from './UI/Button';
 
-import { statusList } from '../services/helpers';
+import { statusList, colorStyles } from '../services/helpers';
 
 class OrdersChangeStatus extends Component {
     state = {
@@ -35,6 +35,7 @@ class OrdersChangeStatus extends Component {
                     value={status}
                     onChange={item => this.handleChange(item)}
                     options={statusList.filter(el => el.isSelect)}
+                    styles={colorStyles}
                     />
                 <Button type="submit">Применить</Button>
             </form>

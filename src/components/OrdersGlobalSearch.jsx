@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Input from '../components/UI/Input';
+import Button from '../components/UI/Button';
 
 class OrdersGlobalSearch extends Component {
     state = {
@@ -6,9 +8,10 @@ class OrdersGlobalSearch extends Component {
     }
     render() {
         return (
-            <div>
-                123
-            </div>
+            <form className="global-search">
+                <Input />
+                <Button>Применить</Button>
+            </form>
         )
     }
 }

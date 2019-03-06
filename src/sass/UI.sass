@@ -39,6 +39,9 @@
 button
     position: relative
     overflow: hidden
+    &:disabled
+        background-color: grey
+        cursor: not-allowed
 
 .btn
 	user-select: none
@@ -107,7 +110,7 @@ button
 
 .Input 
     width: 100%
-    padding: 10px
+    // padding: 10px
     box-sizing: border-box
 .Label 
     font-weight: bold

@@ -32,7 +32,7 @@ class OrdersTable extends Component {
             path: "edit",
             label: "Редактировать",
             // content: item => <button className="btn btn--blue btn--edituser"></button>
-            content: item => <Button className="btn--blue btn--edituser"/>
+            content: item => <Button className="btn--blue btn--edituser" onClick={this.props.toggleModal}/>
         }
     ]
     handleChange = (selectedOption) => {
@@ -48,7 +48,7 @@ class OrdersTable extends Component {
             <div className="orders__table">
                 <div className="orders__table-nav">
                     <div className="orders__table-nav-left">
-                        <Button onClick={() => this.showModal()} className="orders__add-product">Добавить заказ</Button>
+                        <Button onClick={() => this.props.toggleModal()} className="orders__add-product">Добавить заказ</Button>
                         <Select className="orders__quantity" defaultValue={qnt[0]} value={this.state.selectedOption} onChange={this.handleChange} options={qnt} />
                         <Button className="orders__reload"/>
                         <span>Всего: {data.ordersCount}</span>
