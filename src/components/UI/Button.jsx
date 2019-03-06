@@ -19,6 +19,7 @@ class Button extends Component {
         onTouchEnd={ this.handleClick.bind(this) }
         onClick={ this.props.onClick }
         type={ this.props.type ? this.props.type : 'button' }
+        disabled={ this.props.disabled }
         >
         { this.props.children }
         <Ripple cursorPos={ this.state.cursorPos } />
