@@ -1,11 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment, useState } from 'react';
 import Select from 'react-select';
 import DatePicker from 'react-date-picker';
 import makeAnimated from 'react-select/lib/animated';
 import { statusList, colorStyles } from '../services/helpers';
 import Button from './UI/Button';
 
+// import { DatePicker } from "material-ui-pickers";
 
+
+function BasicDatePicker(props) {
+    const [selectedDate, handleDateChange] = useState(new Date());
+
+    return (
+        <Fragment>
+            <div className="picker">
+                <DatePicker
+                    label="Basic example"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    animateYearScrolling
+                />
+            </div>
+        </Fragment>
+    );
+}
 class OrdersFilter extends Component {
     state = {
         domains: null,
@@ -23,11 +41,11 @@ class OrdersFilter extends Component {
         this.setState({ [prop.name]: selectedOption })
     }
     render() {
-
         const { domains, products, statuses, startDate, endDate } = this.state;
         let { data } = this.props;
 
         data = data || [];
+
 
         return (
             <ul className="orders__filter">
@@ -46,15 +64,17 @@ class OrdersFilter extends Component {
                 <li className="orders__filter-item">
                     <h3>Дата</h3>
                     <div>
-                        <DatePicker
+                        {/* <DatePicker
                             clearIcon={null}
                             calendarIcon={null}
                             className="orders__filter-date"
                             onChange={date => this.setState({ startDate: date })}
-                            value={startDate}/>
+                            value={startDate}/> */}
                         <span>—</span>
-                        <DatePicker className="orders__filter-date" onChange={date => this.setState({ endDate: date })} value={endDate}/>
-                        {/* <DatePicker name="startDate" className="orders__filter-date" onChange={this.handleChange} value={endDate}/> */}
+                        {/* <DatePicker className="orders__filter-date" onChange={date => this.setState({ endDate: date })} value={endDate}/> */}
+                        
+                        
+                        
                     </div>
                 </li>
                 <li className="orders__filter-item">

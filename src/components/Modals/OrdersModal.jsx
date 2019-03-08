@@ -10,10 +10,23 @@ class OrdersModal extends Component {
             <form className="orders-modal">
                 <div className="orders-modal__top">
                     <h2 className="orders-modal__title">Подробно</h2>
+                    <div onClick={this.props.toggleModal}>X</div>
                 </div>
                 <div className="orders-modal__middle">
-                    <div>123</div>
-                    <div>345</div>
+                    <div>
+                        123456
+                    </div>
+                    <div>
+                        <fieldset className="orders-modal__">
+                            <blockquote>
+                                <p></p>
+                                <div>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </blockquote>
+                        </fieldset>
+                    </div> 
                 </div>
                 <div className="orders-modal__bottom">
                     <Button>Сохранить</Button>
