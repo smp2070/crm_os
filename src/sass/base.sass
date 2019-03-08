@@ -450,7 +450,6 @@ nav
 
 
 
-
 .global-search
 	display: flex
 	align-items: flex-end
@@ -459,10 +458,13 @@ nav
 .orders-modal
 	max-width: 900px
 	&__top
-
+		display: flex
+		align-items: center
+		justify-content: space-between
 	&__middle
 		display: grid
 		grid-template-columns: 1fr 1fr
 		grid-column-gap: 15px
 	&__bottom
-
+	&__title
+		margin: 0

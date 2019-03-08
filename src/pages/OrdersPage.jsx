@@ -10,7 +10,7 @@ import OrdersGlobalSearch from '../components/OrdersGlobalSearch';
 
 import Modal from '../components/UI/Modal';
 import OrdersModal from '../components/Modals/OrdersModal';
-import Button from '../components/UI/Button';
+// import Button from '../components/UI/Button';
 
 class OrdersPage extends Component {
     state = {
