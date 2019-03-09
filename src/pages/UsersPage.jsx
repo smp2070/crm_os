@@ -22,12 +22,13 @@ class AdminPage extends Component {
         { path: "username", label: "Username" },
         { path: "mail", label: "Email" },
         { path: "id", label: "Edit", content: user => (
-            <Button onClick={() => this.showModal(user)} className="btn-blue btn--edituser" />
+            <Button onClick={() => {console.log('user ',user); this.showModal(user)} } className="btn-blue btn--edituser" />
         )}
     ]
     async showModal(user) {
-        if (user) this.setState({ isModalEditUser: true, user: await getUser(user.id) })
-        this.setState({ isOpenModal: true });
+        user
+            ? this.setState({ isOpenModal: true, isModalEditUser: true, user: await getUser(user.id) })
+            : this.setState({ isOpenModal: true, isModalEditUser: false })
     }
     hideModal() {
         // this.usersForm.reset();
@@ -47,32 +48,17 @@ class AdminPage extends Component {
     componentDidMount() {
         this.updateUsers();
     }
-    clearUser() {
-
-    }
     render() {
         const { user, users, isOpenModal, isModalEditUser, modalType } = this.state;
-        const modal = isModalEditUser
-            ? <ModalEditUser hide={this.hideModal.bind(this)} submit={this.onSubmit} user={user} />
-            : <ModalAddUser hide={this.hideModal.bind(this)} submit={this.onSubmit}/>
+
         return (
             <div className="users">
                 <h2>Управление операторами</h2>
                 <Button onClick={() => this.showModal()} className="btn--green mb-25">Добавить оператора</Button>
                 <Table columns={this.columns} data={users} />
-                <Modal show={isOpenModal}>{modal}</Modal>
-
-
-                {/* <Modal show={isOpenModal}>
-                    <h2>{isModalEditUser ? 'Редактировать' : 'Добавить'} оператора</h2>
-                    <UserModal
-                        type={modalType}
-                        updateUsers={() => this.updateUsers()}
-                        hide={this.hideModal.bind(this)}
-                        user={user}
-                        />
-                </Modal> */}
-
+                <Modal show={isOpenModal}>
+                    <UserModal hide={this.hideModal.bind(this)} user={user} submit={this.onSubmit}/>
+                </Modal>
             </div>
         )
     }

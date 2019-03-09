@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../UI/Button';
+import Modal from '../UI/Modal';
 
 import InputGroup from '../../components/InputGroup';
 
@@ -7,69 +8,66 @@ class UserModal extends Component {
     state = {
         userForm: null
     }
-    getInitialState() {
-        return {
+    setInitialState() {
+        const base = {
             username: {
-                elementType: 'input',
-                    elementConfig: {
+                elementConfig: {
                     type: 'text',
-                        placeholder: 'Username'
+                    placeholder: 'Username'
                 },
                 value: '',
-                    validation: {
+                validation: {
                     required: true
                 },
                 valid: false,
-                    touched: false
+                touched: false
             },
             surname: {
-                elementType: 'input',
-                    elementConfig: {
+                elementConfig: {
                     type: 'text',
-                        placeholder: 'Surname'
+                    placeholder: 'Surname'
                 },
                 value: '',
-                    validation: {
+                validation: {
                     required: true
                 },
                 valid: false,
-                    touched: false
+                touched: false
             },
             email: {
-                elementType: 'input',
-                    elementConfig: {
+                elementConfig: {
                     type: 'email',
-                        placeholder: 'E-mail'
+                    placeholder: 'E-mail'
                 },
                 value: '',
-                    validation: {
+                validation: {
                     required: true,
-                        isEmail: true
+                    isEmail: true
                 },
                 valid: false,
-                    touched: false
+                touched: false
             },
             password: {
-                elementType: 'input',
-                    elementConfig: {
+                elementConfig: {
                     type: 'password',
-                        placeholder: 'Password'
+                    placeholder: 'Password'
                 },
                 value: '',
-                    validation: {
+                validation: {
                     required: true,
                     // minLength: 5,
                     // maxLength: 5,
                     // isNumeric: true
                 },
                 valid: false,
-                    touched: false
-            },
+                touched: false
+            }
+        };
+        const confirm = {
             confirmPassword: {
-                elementType: 'input',
-                    elementConfig: {
+                elementConfig: {
                     type: 'password',
-                        placeholder: 'Confirm password'
+                    placeholder: 'Confirm password'
                 },
                 value: '',
                     validation: {
@@ -78,52 +76,63 @@ class UserModal extends Component {
                 valid: false,
                     touched: false
             }
+        };
+        console.log('this.props.user: ',this.props.user)
+        console.log('this...', this.props.isModalEditUser)
+        const result = this.props.user ? { ...base, ...confirm } : base;
+        // this.setState( (prevState, props) => {
+        //     if(prevState !== this.state) {
+        //         return { userForm: result };
+        //     }
+        // });
+        if (this.state.userForm !== result) {
+            this.setState({ userForm: result })
         }
+       
     }
+
     handleInputGroup() {
 
     }
+    componentWillUpdate() {
+        // this.setInitialState();
+        console.log('will update')
+    }
     componentDidMount() {
-        this.setState({ userForm: this.getInitialState() })
+        // this.setInitialState();
+        // console.log('did mount')
     }
     setType() {
 
     }
     render() {
+        console.log('render', this.props)
         const { userForm } = this.state;
 
-
-        if (!this.props.user) {
-            // delete this.state.userForm.confirmPassword
-            // console.log(111, this.props.user)
-            // console.log(this.state.userForm)
-            // const newUserForm = {...this.state.userForm}
-            // delete newUserForm.confirmPassword;
-            // console.log('newUserForm',newUserForm);
-            // this.setState({ userForm: newUserForm });
-            // console.log(this.state.userForm);
-
-            const inputGroup = <InputGroup data={userForm} output={item => this.handleInputGroup(item)} />
-        }else{
-            const inputGroup = <InputGroup data={userForm} output={item => this.handleInputGroup(item)} />
-        }
-        
-
+        // let inputs;
+        // if (!this.props.user) {
+        //     inputs = <InputGroup data={userForm} output={item => this.handleInputGroup(item)} />
+        // }else{
+        //     inputs = <InputGroup data={userForm} output={item => this.handleInputGroup(item)} />
+        // }
 
         return (
-            <form className="users__modal" ref={form => this.usersForm = form} onSubmit={e => this.props.submit(e)}>
-                {/* { inputGroup } */}
-                <div className="users__modal-buttons">
-                    <Button className="btn--green" type="submit">Сохранить</Button>
-                    <Button
-                        className="btn--dark"
-                        onClick={() => {
 
-                            this.props.hide()
-                        }}
-                    >Отменить</Button>
-                </div>
-            </form>
+                <form className="users__modal" ref={form => this.usersForm = form} onSubmit={e => this.props.submit(e)}>
+                    {/* { inputs } */}
+                    <InputGroup data={userForm} output={item => this.handleInputGroup(item)} />
+                    <div className="users__modal-buttons">
+                        <Button className="btn--green" type="submit">Сохранить</Button>
+                        <Button
+                            className="btn--dark"
+                            onClick={() => {
+
+                                this.props.hide()
+                            }}
+                        >Отменить</Button>
+                    </div>
+                </form>
+
         )
     }
 }
