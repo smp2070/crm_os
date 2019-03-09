@@ -23,3 +23,129 @@ input
 			color: #fff
 			border-bottom: 2px solid #fff
 			border-right: 2px solid #fff
+
+
+
+
+.Input 
+    width: 100%
+    // padding: 10px
+    box-sizing: border-box
+	
+    position: relative
+.Label 
+    font-weight: bold
+    display: block
+    margin-bottom: 8px
+.InputElement 
+    outline: none
+    // border: 1px solid #ccc
+    background-color: white
+    font: inherit
+    padding: 6px 10px
+    display: block
+    width: 100%
+    box-sizing: border-box
+.InputElement:focus 
+    outline: none
+    // background-color: #ccc
+.Invalid 
+    border: 1px solid #FDA49A !important
+    background-color: #FDA49A
+.Valid
+	border: 1px solid green !important
+	// background-color: #4caf50
+
+/* necessary to give position: relative to parent.
+
+input:not([type="checkbox"])
+  font: 15px/24px "Lato", Arial, sans-serif
+  color: #333
+  width: 100%
+  box-sizing: border-box
+  letter-spacing: 1px
+
+
+// #4caf50
+input:not([type="checkbox"])
+  border: 1px solid #ccc
+  padding: 7px 14px 9px
+  transition: 0.4s
+  ~ .focus-border
+    &:before
+      content: ""
+      position: absolute
+      top: 0
+      left: 50%
+      width: 0
+      height: 2px
+      background-color: var(--primary)
+      transition: 0.4s
+    &:after
+      content: ""
+      position: absolute
+      top: 0
+      left: 50%
+      width: 0
+      height: 2px
+      background-color: var(--primary)
+      transition: 0.4s
+      top: auto
+      bottom: 0
+    i
+      &:before
+        content: ""
+        position: absolute
+        top: 50%
+        left: 0
+        width: 2px
+        height: 0
+        background-color: var(--primary)
+        transition: 0.6s
+      &:after
+        content: ""
+        position: absolute
+        top: 50%
+        left: 0
+        width: 2px
+        height: 0
+        background-color: var(--primary)
+        transition: 0.6s
+        left: auto
+        right: 0
+  &:focus ~ .focus-border
+    &:before, &:after
+      left: 0
+      width: 100%
+      transition: 0.4s
+    i
+      &:before, &:after
+        top: 0
+        height: 100%
+        transition: 0.6s
+
+	
+.Invalid
+	~ .focus-border
+		&:before
+			background-color: red !important
+		&:after
+			background-color: red !important
+		i
+			&:before
+				background-color: red !important
+			&:after
+				background-color: red !important
+
+.Valid
+	~ .focus-border
+		&:before
+			background-color: green !important
+		&:after
+			background-color: green !important
+		i
+			&:before
+				background-color: green !important
+			&:after
+				background-color: green !important
+

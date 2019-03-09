@@ -61,6 +61,7 @@ const InputGroup = (props) => {
                     shouldValidate={formElement.config.validation}
                     touched={formElement.config.touched}
                     changed={(event) => inputChangedHandler(event, formElement.id)}
+                    
                 />
             ))}
         </Fragment>

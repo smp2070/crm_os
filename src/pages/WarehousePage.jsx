@@ -4,11 +4,18 @@ import Table from '../components/UI/Table/table';
 import Button from '../components/UI/Button';
 import Modal from '../components/UI/Modal';
 
+import StoreProductModal from '../components/Modals/StoreProductModal';
+import StoreHistoryModal from '../components/Modals/StoreHistoryModal';
+
 class WarehousePage extends Component {
     state = {
         products: [], // array
-        isOpenProductModal: false,
-        isOpenHistoryModal: false,
+        productModal: false,
+        historyModal: false,
+        product: null,
+        history: null,
+
+        isOpenModal: false
     }
     columns = [
         { path: "name", label: "Товар" },
@@ -26,21 +33,25 @@ class WarehousePage extends Component {
             content: item => <Button className="btn--blue btn--edituser" onClick={() => this.showProductModal(item.id)} />
         }
     ]
-    showHistoryModal(item) {
-        console.log('clicked history button with id: ', item)
-    }
 
-    showProductModal(item) {
-        console.log(item)
-        
-        this.setState({ isOpenProductModal: true })
+    showHistoryModal(id) {
+        console.log(id)
+        this.setState({ historyModal: true, history: id })
     }
-    hideProductModal() {
-        this.setState({ isOpenProductModal: false })
+    showProductModal() {
+        this.setState({ productModal: true, isOpenModal: true})
     }
     submitProduct(e) {
         e.preventDefault();
         console.log('submit');
+    }
+    hideModal() {
+        this.setState({
+            productModal: false,
+            historyModal: false,
+            product: null,
+            history: null
+        });
     }
     async componentDidMount() {
         this.setState({
@@ -48,25 +59,14 @@ class WarehousePage extends Component {
         })
     }
     render() {
-        const { products } = this.state;
+        const { products, productModal, historyModal, product, history } = this.state;
         return (
             <div className="warehouse">
                 <h2>Склад</h2>
                 <Button className="btn--green mb-25" onClick={() => this.showProductModal()}>Добавить товар</Button>
                 <Table columns={this.columns} data={products} className="warehouse__table"/>
-                <Modal show={this.state.isOpenHistoryModal}>
-
-                </Modal>
-                <Modal show={this.state.isOpenProductModal}>
-                    {/* <h2>{isEditModal ? 'Редактировать' : 'Добавить'} оператора</h2> */}
-                    <form className="users__modal" ref={form => this.usersForm = form} onSubmit={e => this.submitProduct(e)}>
-                        {/* {inputs} */}
-                        <div className="users__modal-buttons">
-                            <Button className="btn--green" type="submit">Сохранить</Button>
-                            <Button className="btn--dark" onClick={() => this.hideProductModal()}>Отменить</Button>
-                        </div>
-                    </form>
-                </Modal>
+                <StoreProductModal show={productModal} hide={this.hideModal.bind(this)} data={product} />
+                <StoreHistoryModal show={historyModal} hide={this.hideModal.bind(this)} data={history}/>
             </div>
         );
     }
