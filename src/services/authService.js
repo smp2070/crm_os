@@ -21,7 +21,11 @@ export const getProducts = async () => {
 
 export const getCategories = async () => {
     const { data } = await axios.get('/tovar/getCategory');
-    return data;
+    return data.map(item => ({
+        ...item,
+        label: item.name,
+        
+    }));
 };
 
 export const getUsers = async () => {

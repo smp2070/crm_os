@@ -1,6 +1,5 @@
 import React from 'react';
-
-// import classes from './Input.css';
+import Select from 'react-select';
 
 const input = (props) => {
     let inputElement = null;
@@ -13,7 +12,7 @@ const input = (props) => {
     // if (props.valid) {
     //     inputClasses.push('Valid');
     // }
-    console.log(props);
+    // console.log(props);
     props.invalid && props.shouldValidate && props.touched && inputClasses.push('Invalid');
     !props.invalid && inputClasses.push('Valid');
 
@@ -37,16 +36,21 @@ const input = (props) => {
             break;
         case ('select'):
             inputElement = (
-                <select
+                // <select
+                //     className={inputClasses.join(' ')}
+                //     value={props.value}
+                //     onChange={props.changed}>
+                //     {props.elementConfig.options.map(option => (
+                //         <option key={option.value} value={option.value}>
+                //             {option.displayValue}
+                //         </option>
+                //     ))}
+                // </select>
+                <Select
                     className={inputClasses.join(' ')}
-                    value={props.value}
-                    onChange={props.changed}>
-                    {props.elementConfig.options.map(option => (
-                        <option key={option.value} value={option.value}>
-                            {option.displayValue}
-                        </option>
-                    ))}
-                </select>
+                    onChange={props.changed}
+                    options={props.elementConfig.options}
+                />
             );
             break;
         default:
@@ -61,15 +65,14 @@ const input = (props) => {
     return (
         <div className={'Input'}>
             {props.label && <label className={'Label'}>{props.label}</label>}
-            {/* <div> */}
 
+            <div style={{position: 'relative'}}>
                 {inputElement}
                 <span className="focus-border">
                     <i></i>
                 </span>
-            {/* </div> */}
+            </div>
 
-            {/* <input class="effect-7" type="text" placeholder="Placeholder Text7"> */}
         </div>
     );
 

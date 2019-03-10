@@ -6,7 +6,20 @@ const InputGroup = (props) => {
         const updatedOrderForm = { ...props.data };
         const updatedFormElement = { ...updatedOrderForm[inputIdentifier] };
 
-        updatedFormElement.value = event.target.value;
+        // console.log('event',event);
+        // console.log('inputIdentifier', inputIdentifier);
+        // console.log('this', updatedFormElement.elementType === 'select');
+        // if (updatedFormElement.elementType === 'select') {
+        //     updatedFormElement.value = event.label
+        // } else {
+        //     updatedFormElement.value = event.target.value;
+        // }
+
+        updatedFormElement.value = updatedFormElement.elementType === 'select'
+            ? updatedFormElement.value = event.label
+            : updatedFormElement.value = event.target.value;
+
+        // updatedFormElement.value = event.target.value;
         updatedFormElement.valid = checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedFormElement.touched = true;
         updatedOrderForm[inputIdentifier] = updatedFormElement;
