@@ -4,6 +4,8 @@ import Modal from '../UI/Modal';
 
 import InputGroup from '../../components/InputGroup';
 
+import { getCategories } from '../../services/authService';
+
 class StoreProductModal extends Component {
     state = {
         product: this.setInitialState(),
@@ -12,6 +14,7 @@ class StoreProductModal extends Component {
     setInitialState() {
         return {
             name: {
+                label: 'Товар',
                 elementConfig: {
                     type: 'text',
                     placeholder: 'Товар'
@@ -22,10 +25,12 @@ class StoreProductModal extends Component {
                 touched: false
             },
             category: {
-                elementType: 'input',
+                label: 'Категория товара',
+                elementType: 'select',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Виберите категорию'
+                    placeholder: 'Виберите категорию',
+                    options: []
                 },
                 value: '',
                 validation: { required: true },
@@ -33,6 +38,7 @@ class StoreProductModal extends Component {
                 touched: false
             },
             balance: {
+                label: 'Остаток',
                 elementConfig: {
                     type: 'number',
                     placeholder: 'Остаток'
@@ -46,6 +52,7 @@ class StoreProductModal extends Component {
                 touched: false
             },
             purchasePrice: {
+                label: 'Закупочная цена',
                 elementConfig: {
                     type: 'number',
                     placeholder: 'Закупочная цена'
@@ -59,6 +66,7 @@ class StoreProductModal extends Component {
                 touched: false
             },
             price: {
+                label: 'Цена',
                 elementConfig: {
                     type: 'number',
                     placeholder: 'Цена'
@@ -72,6 +80,7 @@ class StoreProductModal extends Component {
                 touched: false
             },
             discountPrice: {
+                label: 'Cкидочная цена',
                 elementConfig: {
                     type: 'number',
                     placeholder: 'Скидочная цена'
@@ -86,7 +95,12 @@ class StoreProductModal extends Component {
             }
         }
     }
-
+    async componentDidMount() {
+        console.log(await getCategories())
+        const newProduct = {...this.state.product};
+        newProduct.category.elementConfig.options = await getCategories();
+        this.setState({ product: newProduct });
+    }
     handleInputGroup(output, isValid) {
         this.setState({ product: output, formIsValid: isValid })
         setTimeout(() => console.log(isValid), 500)
