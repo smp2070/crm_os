@@ -458,8 +458,12 @@ nav
 
 
 .global-search
-	display: flex
-	align-items: flex-end
+	display: grid
+	grid-template-columns: 200px 1fr
+	grid-column-gap: 15px
+	&__input
+		height: 38px
+		// width: 200px
 	
 
 .orders-modal

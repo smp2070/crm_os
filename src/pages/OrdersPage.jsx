@@ -12,26 +12,38 @@ import Modal from '../components/UI/Modal';
 import OrdersModal from '../components/Modals/OrdersModal';
 // import Button from '../components/UI/Button';
 
+import OrdersNav from '../components/OrdersNav';
+
 class OrdersPage extends Component {
     state = {
         data: {}, // object
-        isOpenModal: false
+        isOpenModal: false,
+        currentStatus: 0
+    }
+    changeStatus(x) {
+        console.log('e', x);
+        
+        // this.setState({ currentStatus: x })
     }
     toggleModal() {
-        this.setState({isOpenModal: !this.state.isOpenModal});
+        this.setState({ isOpenModal: !this.state.isOpenModal });
     }
     async componentDidMount() {
         this.setState({ data: await getOrders() });
     }
     render() {
-        const { data, isOpenModal } = this.state;
+        const { data, isOpenModal, currentStatus } = this.state;
         console.log(data);
         return (
             <div className="orders">
-                <div className="orders__flex" style={{borderBottom: '5px solid green'}} >
+
+                <OrdersNav currentStatus={currentStatus} changeStatus={this.changeStatus}/>
+                
+                {/* <div className="orders__flex" style={{borderBottom: '5px solid green'}} >
                     <StatusList />
                     <OrdersGlobalSearch />
-                </div>
+                </div> */}
+
                 <div className="orders__flex">
                     <OrdersFilter data={data} />
                     <OrdersChangeStatus />
